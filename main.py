@@ -3,6 +3,14 @@ import numpy as np
 import random
 import matplotlib.pyplot as plt
 
+model_A = Forward_net()
+# checkpoint = torch.load('D:/ckpt_parameters/Forward/model0_Fixed_layer_epoch190.pt')
+checkpoint = torch.load('D:/ckpt_parameters/Forward/model0_single_layer_epoch1000.pt')
+model_A.load_state_dict(checkpoint['model_state_dict'])
+
+model_A.eval()
+model_A = model_A.cuda()
+
 # desired_electric_field = 2*np.load('D:/DL_numpy_data/CF_example_2.npy')
 # desired_electric_field[0,:,:] = 3*np.load('D:/DL_numpy_data/CF_example_gauss2.npy')[0,:,:]
 # desired_electric_field[1,:,:] = 3*np.load('D:/DL_numpy_data/CF_example_gauss2.npy')[1,:,:]
